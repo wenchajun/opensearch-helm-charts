@@ -1,6 +1,6 @@
 ---
 clusterName: "opensearch-cluster"
-nodeGroup: "master"
+nodeGroup: "data"
 
 # The service that non master groups will try to connect to when joining the cluster
 # This should be set to clusterName + "-" + nodeGroup for your master group
@@ -9,12 +9,11 @@ masterService: "opensearch-cluster-master"
 # OpenSearch roles that will be applied to this nodeGroup
 # These will be set as environment variable "node.roles". E.g. node.roles=master,ingest,data,remote_cluster_client
 roles:
-  - master
   - ingest
   - data
-  - remote_cluster_client
 
-replicas: 3
+
+replicas: 1
 
 # if not set, falls back to parsing .Values.imageTag, then .Chart.appVersion.
 majorVersion: ""
